@@ -1,0 +1,34 @@
+{
+  "name": "needle-cam-viewer",
+  "author": "Raymond Chu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "View Tesla camera footage locally in your browser with complete privacy",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.6.1",
+    "leaflet": "^1.9.4",
+    "next": "^16.1.6",
+    "protobufjs": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.1.6",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "next-pwa": "^5.6.0"
+  }
+}

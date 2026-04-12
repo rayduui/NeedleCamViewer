@@ -1,0 +1,183 @@
+/* ─── Overlay strip ──────────────────────────────────────────────────────── */
+.telemetryOverlay {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: auto;
+  cursor: grab;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 16px;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 2px solid #e82127;
+  opacity: 0.92;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.telemetryOverlay:hover {
+  opacity: 1;
+}
+
+.dragging {
+  cursor: grabbing;
+  opacity: 1;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Speed ──────────────────────────────────────────────────────────────── */
+.speedValue {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 900;
+  font-size: 1.7rem;
+  color: #fff;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.speedUnit {
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  align-self: flex-end;
+  padding-bottom: 3px;
+  margin-left: -4px;
+}
+
+/* ─── Gear ───────────────────────────────────────────────────────────────── */
+.gearBadge {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e82127;
+  line-height: 1;
+}
+
+/* ─── Separator ──────────────────────────────────────────────────────────── */
+.separator {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.10);
+  flex-shrink: 0;
+}
+
+/* ─── Icons ──────────────────────────────────────────────────────────────── */
+.icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+/* ─── Signal active state ────────────────────────────────────────────────── */
+.signalOn {
+  color: #ffa500;
+  animation: blink 0.75s ease-in-out infinite;
+}
+
+.iconDim {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.iconAp {
+  color: #00e676;
+}
+
+.iconThrottle {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.iconBrake {
+  color: #e82127;
+}
+
+/* ─── Autopilot label ────────────────────────────────────────────────────── */
+.apLabel {
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.18);
+  transition: color 0.2s;
+  margin-left: -2px;
+}
+
+.apLabelActive {
+  color: #00e676;
+}
+
+/* ─── Metric values (throttle / brake) ──────────────────────────────────── */
+.metricVal {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition: color 0.2s;
+  margin-left: -3px;
+}
+
+.throttleVal {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.brakeVal {
+  color: #e82127;
+}
+
+.metricUnit {
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+/* ─── Blink ──────────────────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.1; }
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .telemetryOverlay {
+    top: 8px;
+    height: 38px;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .speedValue  { font-size: 1.4rem; }
+  .gearBadge   { font-size: 0.95rem; }
+  .metricVal   { font-size: 0.85rem; }
+  .icon        { width: 15px; height: 15px; }
+}
+
+@media (max-width: 480px) {
+  .telemetryOverlay {
+    top: 6px;
+    height: 34px;
+    padding: 0 10px;
+    gap: 5px;
+  }
+
+  .speedValue  { font-size: 1.2rem; }
+  .gearBadge   { font-size: 0.85rem; }
+  .metricVal   { font-size: 0.75rem; }
+  .icon        { width: 13px; height: 13px; }
+  .apLabel     { font-size: 0.55rem; }
+}

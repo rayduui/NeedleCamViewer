@@ -1,0 +1,462 @@
+.controls {
+  background: var(--controls-gradient);
+  padding: 0 0 0.625rem;
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.25s ease;
+}
+
+/* ─── Thick editor-style timeline ───────── */
+.timeline {
+  position: relative;
+}
+
+.timelineTrack {
+  position: relative;
+  height: 36px;
+  background: var(--surface-overlay);
+  overflow: visible; /* allow trim handle grips to extend slightly */
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(232, 33, 39, 0.28);
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: #e82127;
+  box-shadow: 0 0 8px rgba(232, 33, 39, 0.8);
+  transform: translateX(-1px);
+  pointer-events: none;
+  transition: left 0.08s linear;
+}
+
+/* Invisible range input overlay for seeking */
+.seekInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.seekInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 36px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.seekInput::-moz-range-thumb {
+  width: 20px;
+  height: 36px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* ─── Trim overlays ──────────────────────── */
+.trimExcLeft,
+.trimExcRight {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.58);
+  pointer-events: none;
+  z-index: 1;
+}
+.trimExcLeft  { left: 0; }
+.trimExcRight { right: 0; }
+
+.trimRange {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(232, 33, 39, 0.10);
+  border-top: 1px solid rgba(232, 33, 39, 0.25);
+  border-bottom: 1px solid rgba(232, 33, 39, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Trim handles ───────────────────────── */
+.trimHandle {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 20px;
+  transform: translateX(-50%);
+  z-index: 4; /* above seekInput (z-index 2) */
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trimLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: #e82127;
+  box-shadow: 0 0 8px rgba(232, 33, 39, 0.7);
+  pointer-events: none;
+}
+
+.trimGrip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 22px;
+  background: #e82127;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.trimGrip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── Trim label in time display ─────────── */
+.trimLabel {
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgba(232, 33, 39, 0.9);
+}
+
+.timeDisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 1rem 0;
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+/* ─── Controls row ───────────────────────── */
+.playbackControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.btnIcon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s;
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border: 1px solid var(--border-mid);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btnIcon:hover {
+  background: var(--surface-overlay);
+  border-color: var(--text-faint);
+}
+
+.btnIcon:active {
+  transform: scale(0.95);
+}
+
+/* Play/pause — red, slightly larger */
+.btnPlay {
+  background: #e82127;
+  border-color: #e82127;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.btnPlay:hover {
+  background: #cc1c21 !important;
+  border-color: #cc1c21 !important;
+}
+
+/* ─── Volume ─────────────────────────────── */
+.volumeSlider {
+  width: 80px;
+  height: 3px;
+  border-radius: 0;
+  background: var(--surface-overlay);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  background: var(--text-primary);
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 0;
+  background: var(--text-primary);
+  cursor: pointer;
+}
+
+/* ─── Speed custom dropdown ──────────────── */
+.speedContainer {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.speedBtn {
+  height: 36px;
+  padding: 0 0.625rem;
+  background: var(--surface-tint);
+  border: 1px solid var(--border-mid);
+  color: var(--text-primary);
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  min-width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.speedBtn:hover,
+.speedBtnOpen {
+  background: var(--surface-raised);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.speedChevron {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform 0.15s;
+}
+
+.speedBtnOpen .speedChevron {
+  transform: rotate(180deg);
+}
+
+.speedMenu {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-mid);
+  display: flex;
+  flex-direction: column;
+  min-width: 80px;
+  z-index: 200;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.speedOption {
+  height: 36px;
+  padding: 0 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.12s, color 0.12s;
+}
+
+.speedOption:last-child {
+  border-bottom: none;
+}
+
+.speedOption:hover {
+  background: var(--surface-tint);
+  color: var(--text-primary);
+}
+
+.speedOptionActive {
+  color: var(--primary-color) !important;
+  background: rgba(232, 33, 39, 0.08) !important;
+  border-left: 2px solid var(--primary-color);
+}
+
+/* ─── Tablet ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .playbackControls {
+    padding: 0.5rem 0.875rem 0;
+  }
+
+  .volumeSlider {
+    width: 64px;
+  }
+}
+
+/* ─── Mobile ─────────────────────────────── */
+@media (max-width: 768px) {
+  .controls {
+    padding: 0 0 0.375rem;
+  }
+
+  .timelineTrack {
+    height: 28px;
+  }
+
+  .seekInput::-webkit-slider-thumb {
+    height: 28px;
+  }
+
+  .seekInput::-moz-range-thumb {
+    height: 28px;
+  }
+
+  .timeDisplay {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.625rem 0;
+  }
+
+  .playbackControls {
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem 0;
+  }
+
+  .btnIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btnPlay {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btnIcon svg,
+  .btnPlay svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .volumeSlider {
+    width: 50px;
+  }
+
+  .speedBtn {
+    height: 32px;
+    font-size: 0.9rem;
+    min-width: 46px;
+    padding: 0 0.5rem;
+  }
+
+  .speedOption {
+    height: 32px;
+    font-size: 0.88rem;
+  }
+}
+
+/* ─── Small mobile ───────────────────────── */
+@media (max-width: 480px) {
+  .timelineTrack {
+    height: 24px;
+  }
+
+  .seekInput::-webkit-slider-thumb {
+    height: 24px;
+  }
+
+  .seekInput::-moz-range-thumb {
+    height: 24px;
+  }
+
+  .playbackControls {
+    gap: 0.3rem;
+    padding: 0.3rem 0.5rem 0;
+  }
+
+  .btnIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .btnPlay {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btnIcon svg,
+  .btnPlay svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .volumeSlider {
+    width: 38px;
+  }
+
+  .speedBtn {
+    height: 28px;
+    font-size: 0.82rem;
+    min-width: 40px;
+    padding: 0 0.4rem;
+  }
+
+  .speedOption {
+    height: 30px;
+    font-size: 0.82rem;
+  }
+}

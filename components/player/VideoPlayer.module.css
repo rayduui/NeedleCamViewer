@@ -1,0 +1,297 @@
+.playerContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 12px;
+  gap: 10px;
+  transition: background-color 0.25s ease;
+}
+
+.playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ─── Top action buttons ────────────────────────── */
+.topBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.topBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.topBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.topBtnActive {
+  background: rgba(232, 33, 39, 0.12);
+  border-color: rgba(232, 33, 39, 0.5);
+  color: #e82127;
+}
+
+.topBtnActive:hover:not(:disabled) {
+  background: rgba(232, 33, 39, 0.2);
+  border-color: #e82127;
+}
+
+.topBtnExport {
+  background: #e82127;
+  border-color: #e82127;
+  color: #fff;
+}
+
+.topBtnExport:hover:not(:disabled) {
+  background: #cc1c21;
+  border-color: #cc1c21;
+  color: #fff;
+}
+
+.snapshotBtn {
+  flex-shrink: 0;
+}
+
+/* ─── Close button ─────────────────────────────── */
+.closePlayerBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  border: 1px solid var(--border-mid);
+  background: var(--surface-tint);
+  color: var(--text-medium);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.closePlayerBtn:hover {
+  background: var(--surface-raised);
+  border-color: var(--text-faint);
+  color: var(--text-primary);
+}
+
+.closePlayerBtn:active {
+  transform: scale(0.96);
+}
+
+/* ─── Watermark panel ──────────────────────────── */
+.watermarkPanel {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 2px solid rgba(232, 33, 39, 0.5);
+  flex-shrink: 0;
+}
+
+.wmField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wmFieldGrow {
+  flex: 1;
+}
+
+.wmField label {
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+}
+
+.wmInput,
+.wmSelect {
+  height: 32px;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  color: #fff;
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.wmInput:focus,
+.wmSelect:focus {
+  border-color: #e82127;
+}
+
+.wmSelect:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.wmSelect option {
+  background: #111;
+  color: #fff;
+}
+
+/* ─── Hidden export elements ───────────────────── */
+.hiddenExport {
+  display: none;
+}
+
+/* ─── Content area ─────────────────────────────── */
+.contentArea {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Loading ───────────────────────────────────── */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-top-color: #e82127;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #000;
+}
+
+.loadingContainer p {
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0;
+}
+
+/* ─── Mobile ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .playerContainer {
+    padding: 4px;
+    gap: 4px;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+  }
+
+  .playerHeader {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-height: 36px;
+  }
+
+  .headerActions {
+    justify-content: flex-end;
+    flex-shrink: 0;
+    gap: 5px;
+  }
+
+  .topBtn {
+    padding: 0 8px;
+    height: 28px;
+    font-size: 0.62rem;
+  }
+
+  .closePlayerBtn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .watermarkPanel {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* ─── Small mobile ──────────────────────────────── */
+@media (max-width: 480px) {
+  .playerContainer {
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .playerHeader {
+    min-height: 32px;
+    gap: 4px;
+  }
+
+  .topBtn {
+    padding: 0 6px;
+    height: 26px;
+    font-size: 0.58rem;
+  }
+
+  .closePlayerBtn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+}
