@@ -8,6 +8,8 @@
 
 All video processing happens client-side — no uploads, no server, complete privacy.
 
+> **Note:** iOS is not supported. iOS does not support the File System Access API or the `webkitdirectory` input attribute required to read local folders in the browser.
+
 ---
 
 ## Features
