@@ -156,7 +156,6 @@ function SettingsPanel({ isOpen, onClose }) {
             <div className={styles.settingRow}>
               <div className={styles.settingInfo}>
                 <span className={styles.settingName}>{t('settings.language')}</span>
-                <span className={styles.settingDesc}>{t('settings.languageDesc')}</span>
               </div>
               <select
                 className={styles.langSelect}
@@ -164,7 +163,9 @@ function SettingsPanel({ isOpen, onClose }) {
                 onChange={(e) => setLanguage(e.target.value)}
               >
                 {locales.map((l) => (
-                  <option key={l.code} value={l.code}>{l.name}</option>
+                  <option key={l.code} value={l.code}>
+                    {l.code.toUpperCase()} — {l.name}
+                  </option>
                 ))}
               </select>
             </div>
