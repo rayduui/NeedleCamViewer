@@ -3,8 +3,10 @@
 import { useState, useEffect, useMemo, useCallback, memo, useRef } from 'react';
 import { formatDate, formatTime } from '@/lib/helpers';
 import styles from './EventList.module.css';
+import { useTranslation } from '@/hooks/useTranslation';
 
 function EventList({ events, currentEvent, currentFilter, onSelectEvent, horizontalMode = false }) {
+  const { t } = useTranslation();
   const filteredEvents = useMemo(() => {
     return currentFilter === 'all'
       ? events
@@ -15,7 +17,7 @@ function EventList({ events, currentEvent, currentFilter, onSelectEvent, horizon
     return (
       <div className={`${styles.eventsList} ${horizontalMode ? styles.horizontal : ''}`}>
         <div className={styles.loading}>
-          {events.length === 0 ? 'Select a folder to begin' : 'No events found'}
+          {events.length === 0 ? t('events.selectFolder') : t('events.noEvents')}
         </div>
       </div>
     );
@@ -36,6 +38,7 @@ function EventList({ events, currentEvent, currentFilter, onSelectEvent, horizon
 }
 
 const EventListItem = memo(function EventListItem({ event, isActive, onSelect }) {
+  const { t } = useTranslation();
   const [thumbnail, setThumbnail] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -212,7 +215,7 @@ const EventListItem = memo(function EventListItem({ event, isActive, onSelect })
         <div className={styles.eventDate}>{formatDate(event.timestamp)}</div>
         <div className={styles.eventTime}>{formatTime(event.timestamp)}</div>
         <div className={styles.eventCameraCount}>
-          {Object.keys(event.videos).length} camera(s)
+          {t('events.cameras', { n: Object.keys(event.videos).length })}
         </div>
       </div>
     </div>

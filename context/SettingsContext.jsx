@@ -7,19 +7,24 @@ const SettingsContext = createContext({
   setTheme: () => {},
   speedUnit: 'mph',
   setSpeedUnit: () => {},
+  language: 'en',
+  setLanguage: () => {},
 });
 
 export function SettingsProvider({ children }) {
   const [theme, setThemeState] = useState('dark');
   const [speedUnit, setSpeedUnitState] = useState('mph');
+  const [language, setLanguageState] = useState('en');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem('nc-theme') || 'dark';
     const savedSpeedUnit = localStorage.getItem('nc-speedUnit') || 'mph';
+    const savedLanguage = localStorage.getItem('nc-language') || 'en';
     setThemeState(savedTheme);
     setSpeedUnitState(savedSpeedUnit);
+    setLanguageState(savedLanguage);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
@@ -34,8 +39,13 @@ export function SettingsProvider({ children }) {
     localStorage.setItem('nc-speedUnit', value);
   };
 
+  const setLanguage = (value) => {
+    setLanguageState(value);
+    localStorage.setItem('nc-language', value);
+  };
+
   return (
-    <SettingsContext.Provider value={{ theme, setTheme, speedUnit, setSpeedUnit, mounted }}>
+    <SettingsContext.Provider value={{ theme, setTheme, speedUnit, setSpeedUnit, language, setLanguage, mounted }}>
       {children}
     </SettingsContext.Provider>
   );
