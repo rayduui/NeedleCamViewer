@@ -11,7 +11,8 @@ const COFFEE_URL = "https://buymeacoffee.com/raymondc";
 const ISSUES_URL = "https://github.com/issues";
 
 function SettingsPanel({ isOpen, onClose }) {
-  const { theme, setTheme, speedUnit, setSpeedUnit, language, setLanguage } = useSettings();
+  const { theme, setTheme, speedUnit, setSpeedUnit, language, setLanguage } =
+    useSettings();
   const { t } = useTranslation();
   const panelRef = useRef(null);
 
@@ -44,7 +45,7 @@ function SettingsPanel({ isOpen, onClose }) {
         ref={panelRef}
         className={`${styles.panel} ${isOpen ? styles.panelOpen : ""}`}
         role="dialog"
-        aria-label={t('settings.title')}
+        aria-label={t("settings.title")}
         aria-modal="true"
         tabIndex={-1}
       >
@@ -52,12 +53,12 @@ function SettingsPanel({ isOpen, onClose }) {
         <div className={styles.panelHeader}>
           <div className={styles.panelTitle}>
             <span className={styles.panelTitleAccent}>■</span>
-            {t('settings.title')}
+            {t("settings.title")}
           </div>
           <button
             className={styles.closeBtn}
             onClick={onClose}
-            aria-label={t('settings.close')}
+            aria-label={t("settings.close")}
           >
             <svg
               width="16"
@@ -76,7 +77,9 @@ function SettingsPanel({ isOpen, onClose }) {
         <div className={styles.panelBody}>
           {/* ─── Appearance ─── */}
           <section className={styles.section}>
-            <div className={styles.sectionLabel}>{t('settings.appearance')}</div>
+            <div className={styles.sectionLabel}>
+              {t("settings.appearance")}
+            </div>
             <div className={styles.themeGrid}>
               <button
                 className={`${styles.themeCard} ${theme === "dark" ? styles.themeCardActive : ""}`}
@@ -93,7 +96,9 @@ function SettingsPanel({ isOpen, onClose }) {
                     <div className={styles.previewAccent} />
                   </div>
                 </div>
-                <span className={styles.themeLabel}>{t('settings.theme.dark')}</span>
+                <span className={styles.themeLabel}>
+                  {t("settings.theme.dark")}
+                </span>
                 {theme === "dark" && (
                   <span className={styles.themeCheck}>✓</span>
                 )}
@@ -114,7 +119,9 @@ function SettingsPanel({ isOpen, onClose }) {
                     <div className={styles.previewAccent} />
                   </div>
                 </div>
-                <span className={styles.themeLabel}>{t('settings.theme.light')}</span>
+                <span className={styles.themeLabel}>
+                  {t("settings.theme.light")}
+                </span>
                 {theme === "light" && (
                   <span className={styles.themeCheck}>✓</span>
                 )}
@@ -124,13 +131,15 @@ function SettingsPanel({ isOpen, onClose }) {
 
           {/* ─── Units ─── */}
           <section className={styles.section}>
-            <div className={styles.sectionLabel}>{t('settings.units')}</div>
+            <div className={styles.sectionLabel}>{t("settings.units")}</div>
 
             <div className={styles.settingRow}>
               <div className={styles.settingInfo}>
-                <span className={styles.settingName}>{t('settings.speed')}</span>
+                <span className={styles.settingName}>
+                  {t("settings.speed")}
+                </span>
                 <span className={styles.settingDesc}>
-                  {t('settings.speedDesc')}
+                  {t("settings.speedDesc")}
                 </span>
               </div>
               <div className={styles.segmentControl}>
@@ -152,10 +161,12 @@ function SettingsPanel({ isOpen, onClose }) {
 
           {/* ─── Language ─── */}
           <section className={styles.section}>
-            <div className={styles.sectionLabel}>{t('settings.language')}</div>
+            <div className={styles.sectionLabel}>{t("settings.language")}</div>
             <div className={styles.settingRow}>
               <div className={styles.settingInfo}>
-                <span className={styles.settingName}>{t('settings.language')}</span>
+                <span className={styles.settingName}>
+                  {t("settings.language")}
+                </span>
               </div>
               <select
                 className={styles.langSelect}
@@ -164,7 +175,7 @@ function SettingsPanel({ isOpen, onClose }) {
               >
                 {locales.map((l) => (
                   <option key={l.code} value={l.code}>
-                    {l.code.toUpperCase()} — {l.name}
+                    {l.name}
                   </option>
                 ))}
               </select>
@@ -173,21 +184,27 @@ function SettingsPanel({ isOpen, onClose }) {
 
           {/* ─── About ─── */}
           <section className={styles.section}>
-            <div className={styles.sectionLabel}>{t('settings.about')}</div>
+            <div className={styles.sectionLabel}>{t("settings.about")}</div>
 
             <div className={styles.aboutGrid}>
               <div className={styles.aboutRow}>
-                <span className={styles.aboutKey}>{t('settings.about.app')}</span>
+                <span className={styles.aboutKey}>
+                  {t("settings.about.app")}
+                </span>
                 <span className={styles.aboutVal}>
                   Needle — Tesla Cam Viewer
                 </span>
               </div>
               <div className={styles.aboutRow}>
-                <span className={styles.aboutKey}>{t('settings.about.version')}</span>
+                <span className={styles.aboutKey}>
+                  {t("settings.about.version")}
+                </span>
                 <span className={styles.aboutVal}>{VERSION}</span>
               </div>
               <div className={styles.aboutRow}>
-                <span className={styles.aboutKey}>{t('settings.about.telemetry')}</span>
+                <span className={styles.aboutKey}>
+                  {t("settings.about.telemetry")}
+                </span>
                 <span className={styles.aboutVal}>FW 2025.44.25+ · HW3+</span>
               </div>
             </div>
@@ -213,7 +230,7 @@ function SettingsPanel({ isOpen, onClose }) {
                     strokeLinecap="round"
                   />
                 </svg>
-                {t('settings.buyMeCoffee')}
+                {t("settings.buyMeCoffee")}
               </a>
 
               <a
@@ -235,7 +252,7 @@ function SettingsPanel({ isOpen, onClose }) {
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
-                {t('settings.reportIssue')}
+                {t("settings.reportIssue")}
               </a>
             </div>
           </section>
@@ -243,9 +260,9 @@ function SettingsPanel({ isOpen, onClose }) {
           {/* ─── Footer ─── */}
           <div className={styles.panelFooter}>
             <p className={styles.footerNote}>
-              {t('settings.footer')}&nbsp;
+              {t("settings.footer")}&nbsp;
               <span className={styles.footerAccent}>
-                {t('settings.footerAccent')}
+                {t("settings.footerAccent")}
               </span>
             </p>
           </div>
