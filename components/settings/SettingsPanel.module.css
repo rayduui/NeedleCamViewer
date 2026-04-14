@@ -445,6 +445,39 @@
   color: var(--primary-color);
 }
 
+/* ─── Language dropdown ────────────────────────────────────── */
+.langSelect {
+  height: 30px;
+  padding: 0 0.625rem;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-mid);
+  color: var(--text-primary);
+  font-family: var(--font-code), 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23e82127'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  padding-right: 1.75rem;
+  transition: border-color 0.15s, background 0.15s;
+  min-width: 140px;
+}
+
+.langSelect:hover {
+  border-color: var(--border-color);
+  background-color: var(--surface-tint);
+}
+
+.langSelect:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
 /* ─── Mobile ───────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .panel {

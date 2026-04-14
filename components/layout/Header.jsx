@@ -3,8 +3,10 @@
 import { useEffect, useState, memo } from "react";
 import styles from "./Header.module.css";
 import SettingsPanel from "@/components/settings/SettingsPanel";
+import { useTranslation } from "@/hooks/useTranslation";
 
 function Header({ onSelectFolder, folderName, showSelectButton }) {
+  const { t } = useTranslation();
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showInstall, setShowInstall] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -50,7 +52,7 @@ function Header({ onSelectFolder, folderName, showSelectButton }) {
               >
                 <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2z" />
               </svg>
-              Open TeslaCam Folder
+              {t('header.openFolder')}
             </button>
           )}
         </div>
@@ -58,14 +60,14 @@ function Header({ onSelectFolder, folderName, showSelectButton }) {
         <div className={styles.headerRight}>
           {showInstall && (
             <button onClick={handleInstall} className={styles.btnSecondary}>
-              Install App
+              {t('header.installApp')}
             </button>
           )}
           <button
             className={styles.btnIcon}
             onClick={() => setSettingsOpen(true)}
-            aria-label="Open settings"
-            title="Settings"
+            aria-label={t('header.openSettings')}
+            title={t('header.openSettings')}
           >
             <svg
               width="16"

@@ -2,15 +2,16 @@
 
 import { memo } from "react";
 import styles from "./WelcomeScreen.module.css";
-
-const specs = [
-  { label: "Cameras", value: "04" },
-  { label: "Upload", value: "None" },
-  { label: "Telemetry", value: "On" },
-  { label: "Offline", value: "Ready" },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 function WelcomeScreen({ onGetStarted }) {
+  const { t } = useTranslation();
+  const specs = [
+    { label: t('welcome.cameras'), value: "04" },
+    { label: t('welcome.upload'), value: "None" },
+    { label: t('welcome.telemetry'), value: "On" },
+    { label: t('welcome.offline'), value: "Ready" },
+  ];
   return (
     <div className={styles.welcome}>
       <div className={styles.scanlines} aria-hidden="true" />
@@ -32,7 +33,7 @@ function WelcomeScreen({ onGetStarted }) {
           <span className={styles.product}>Tesla&nbsp;Cam&nbsp;Viewer</span>
         </div>
 
-        <p className={styles.tagline}>Local footage &mdash; total privacy</p>
+        <p className={styles.tagline}>{t('welcome.tagline')}</p>
 
         <div className={styles.specs} role="list">
           {specs.map(({ label, value }) => (
@@ -44,7 +45,7 @@ function WelcomeScreen({ onGetStarted }) {
         </div>
 
         <button className={styles.cta} onClick={onGetStarted}>
-          <span>Open Footage</span>
+          <span>{t('welcome.openFootage')}</span>
           <svg
             className={styles.ctaArrow}
             width="18"
@@ -59,8 +60,6 @@ function WelcomeScreen({ onGetStarted }) {
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </button>
-
-        <p className={styles.hint}>Select your TeslaCam drive or folder</p>
       </div>
     </div>
   );

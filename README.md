@@ -1,14 +1,35 @@
-# needle-cam
+# NeedleCamViewer
 
 > A privacy-first, open-source Progressive Web App for viewing Tesla dashcam footage — entirely in your browser.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/yourusername)
 
 All video processing happens client-side — no uploads, no server, complete privacy.
 
 > **Note:** iOS is not supported. iOS does not support the File System Access API or the `webkitdirectory` input attribute required to read local folders in the browser.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Browser Compatibility](#browser-compatibility)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+  - [View Modes](#view-modes)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Project Structure](#project-structure)
+- [Technology Stack](#technology-stack)
+- [Tesla Cam Folder Structure](#tesla-cam-folder-structure)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Privacy & Security](#privacy--security)
+- [Troubleshooting](#troubleshooting)
+- [Support](#support)
+- [License](#license)
 
 ---
 
@@ -38,7 +59,7 @@ All video processing happens client-side — no uploads, no server, complete pri
 
 ```bash
 # Clone the repo
-git clone https://github.com/rayduui/needle-cam.git
+git clone https://github.com/rayduui/NeedleCamViewer.git
 cd needle-cam
 
 # Install dependencies
@@ -91,7 +112,7 @@ npm run test:watch  # Jest in watch mode
 ## Project Structure
 
 ```
-needle-cam/
+NeedleCamViewer/
 ├── app/                    ← Next.js routing (layout, page, globals.css)
 ├── components/
 │   ├── layout/             ← Header, Sidebar, EventList, WelcomeScreen
@@ -111,7 +132,7 @@ needle-cam/
 
 ## Technology Stack
 
-- **Next.js 14** — App Router, static export
+- **Next.js 16** — App Router, static export
 - **React 18** — Hooks-based UI
 - **Leaflet / react-leaflet** — GPS map visualization
 - **next-pwa** — Service worker / offline support via Workbox
@@ -156,7 +177,7 @@ netlify deploy --prod --dir=out
 
 1. Set `basePath` in `next.config.js`:
    ```js
-   basePath: '/needle-cam',
+   basePath: '/NeedleCamViewer',
    ```
 2. Build and deploy:
    ```bash
@@ -223,6 +244,14 @@ Please open a GitHub issue with:
 
 ---
 
+## Support
+
+If NeedleCamViewer has been useful to you, consider buying me a coffee — it helps keep the project going!
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/yourusername)
+
+---
+
 ## License
 
 ```
@@ -251,4 +280,4 @@ SOFTWARE.
 
 ---
 
-> **Disclaimer**: needle-cam is an independent, community-built tool. It is not affiliated with, endorsed by, or connected to Tesla, Inc. in any way.
+> **Disclaimer**: NeedleCamViewer is an independent, community-built tool. It is not affiliated with, endorsed by, or connected to Tesla, Inc. in any way.

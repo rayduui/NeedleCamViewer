@@ -1,7 +1,7 @@
 {
   "name": "needle-cam-viewer",
   "author": "Raymond Chu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "View Tesla camera footage locally in your browser with complete privacy",
   "scripts": {
