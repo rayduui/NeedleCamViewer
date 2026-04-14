@@ -5,7 +5,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/yourusername)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/raymondc)
 
 All video processing happens client-side — no uploads, no server, complete privacy.
 
@@ -248,7 +248,7 @@ Please open a GitHub issue with:
 
 If NeedleCamViewer has been useful to you, consider buying me a coffee — it helps keep the project going!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/yourusername)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/raymondc)
 
 ---
 
