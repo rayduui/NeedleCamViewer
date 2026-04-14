@@ -253,17 +253,6 @@
   transform: translateX(3px);
 }
 
-/* ─── Hint ────────────────────────────────────────────────── */
-.hint {
-  font-family: var(--font-code), 'Courier New', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: var(--text-whisper);
-  text-transform: uppercase;
-  margin-top: 0.9rem;
-  opacity: 0;
-  animation: fadeUp 0.55s ease 0.6s forwards;
-}
 
 /* ─── Shared animation ────────────────────────────────────── */
 @keyframes fadeUp {
@@ -349,9 +338,6 @@
     font-size: 0.75rem;
   }
 
-  .hint {
-    font-size: 0.55rem;
-  }
 }
 
 /* ─── Safe area (notched phones) ──────────────────────────── */

@@ -1,4 +1,4 @@
-# needle-cam
+# NeedleCamViewer
 
 > A privacy-first, open-source Progressive Web App for viewing Tesla dashcam footage — entirely in your browser.
 
@@ -38,8 +38,8 @@ All video processing happens client-side — no uploads, no server, complete pri
 
 ```bash
 # Clone the repo
-git clone https://github.com/rayduui/needle-cam.git
-cd needle-cam
+git clone https://github.com/rayduui/NeedleCamViewer.git
+cd NeedleCamViewer
 
 # Install dependencies
 npm install
@@ -91,7 +91,7 @@ npm run test:watch  # Jest in watch mode
 ## Project Structure
 
 ```
-needle-cam/
+NeedleCamViewer/
 ├── app/                    ← Next.js routing (layout, page, globals.css)
 ├── components/
 │   ├── layout/             ← Header, Sidebar, EventList, WelcomeScreen
@@ -156,7 +156,7 @@ netlify deploy --prod --dir=out
 
 1. Set `basePath` in `next.config.js`:
    ```js
-   basePath: '/needle-cam',
+   basePath: '/NeedleCamViewer',
    ```
 2. Build and deploy:
    ```bash
@@ -251,4 +251,4 @@ SOFTWARE.
 
 ---
 
-> **Disclaimer**: needle-cam is an independent, community-built tool. It is not affiliated with, endorsed by, or connected to Tesla, Inc. in any way.
+> **Disclaimer**: Needle CamViewer is an independent, community-built tool. It is not affiliated with, endorsed by, or connected to Tesla, Inc. in any way.

@@ -60,8 +60,6 @@ function WelcomeScreen({ onGetStarted }) {
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </button>
-
-        <p className={styles.hint}>{t('welcome.hint')}</p>
       </div>
     </div>
   );
