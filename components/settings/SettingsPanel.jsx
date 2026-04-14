@@ -6,9 +6,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { locales } from "@/locales";
 import styles from "./SettingsPanel.module.css";
 
-const VERSION = "1.0.0";
 const COFFEE_URL = "https://buymeacoffee.com/raymondc";
-const ISSUES_URL = "https://github.com/issues";
+const ISSUES_URL = "https://github.com/rayduui/NeedleCamViewer/issues";
 
 function SettingsPanel({ isOpen, onClose }) {
   const { theme, setTheme, speedUnit, setSpeedUnit, language, setLanguage } =
@@ -199,7 +198,7 @@ function SettingsPanel({ isOpen, onClose }) {
                 <span className={styles.aboutKey}>
                   {t("settings.about.version")}
                 </span>
-                <span className={styles.aboutVal}>{VERSION}</span>
+                <span className={styles.aboutVal}>{process.env.NEXT_PUBLIC_APP_VERSION}</span>
               </div>
               <div className={styles.aboutRow}>
                 <span className={styles.aboutKey}>

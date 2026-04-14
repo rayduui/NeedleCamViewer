@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const { version } = require('./package.json');
+
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -21,6 +23,9 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_APP_VERSION: version,
+  },
   output: 'export',
   // Next.js 16 uses Turbopack by default in dev; silence the webpack-config warning
   // since next-pwa is disabled in development anyway.
