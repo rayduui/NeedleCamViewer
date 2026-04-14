@@ -12,6 +12,25 @@ All video processing happens client-side — no uploads, no server, complete pri
 
 ---
 
+## Table of Contents
+
+- [Features](#features)
+- [Browser Compatibility](#browser-compatibility)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+  - [View Modes](#view-modes)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
+- [Project Structure](#project-structure)
+- [Technology Stack](#technology-stack)
+- [Tesla Cam Folder Structure](#tesla-cam-folder-structure)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Privacy & Security](#privacy--security)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+
+---
+
 ## Features
 
 - **Complete Privacy** — Videos never leave your device. Zero uploads.
